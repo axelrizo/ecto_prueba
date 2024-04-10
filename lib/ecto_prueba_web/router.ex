@@ -26,6 +26,7 @@ defmodule EctoPruebaWeb.Router do
 
     get "/users", UserController, :index
     get "/users/:username", UserController, :show
+    get "/users/:username/blogs", BlogController, :index
     # post "/users/:username/blog", BlogController, :create
 
     # post "/users", UserController, :create
