@@ -12,6 +12,14 @@ defmodule EctoPruebaWeb.UserController do
   end
 
   def show(conn, %{"username" => username}) do
-    render(conn, ErrorJSON, "404.json")
+    case Users.get(username) do
+      %User{} = user ->
+        render(conn, "user_show.json", user: user)
+
+      nil ->
+        conn
+        |> put_view(json: ErrorJSON)
+        |> render("404.json")
+    end
   end
 end

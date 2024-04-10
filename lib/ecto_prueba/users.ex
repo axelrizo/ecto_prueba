@@ -15,11 +15,11 @@ defmodule EctoPrueba.Users do
     |> Repo.all()
   end
 
-  @spec get(integer()) :: User.t() | nil
-  def get(id) do
+  @spec get(String.t()) :: User.t() | nil
+  def get(username) do
     User
-    |> where([u], u.id == ^id)
-    |> Repo.one!()
+    |> where([u], u.username == ^username)
+    |> Repo.one()
   end
 
   def get_inactive_adults() do
