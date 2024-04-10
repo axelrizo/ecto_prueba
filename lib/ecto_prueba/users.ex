@@ -8,6 +8,8 @@ defmodule EctoPrueba.Users do
   alias EctoPrueba.Repo
   alias EctoPrueba.Users.User
 
+  @type username :: String.t()
+
   @spec all :: [User.t()]
   def all do
     User
@@ -15,7 +17,7 @@ defmodule EctoPrueba.Users do
     |> Repo.all()
   end
 
-  @spec get(String.t()) :: User.t() | nil
+  @spec get(username()) :: User.t() | nil
   def get(username) do
     User
     |> where([u], u.username == ^username)
@@ -23,7 +25,7 @@ defmodule EctoPrueba.Users do
   end
 
   # PRACTICA PRELOAD
-  @spec get_with_blogs(String.t()) :: %User{} | nil
+  @spec get_with_blogs(username()) :: %User{} | nil
   def get_with_blogs(username) do
     User
     |> where([u], u.username == ^username)
