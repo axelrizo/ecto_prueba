@@ -22,6 +22,15 @@ defmodule EctoPrueba.Users do
     |> Repo.one()
   end
 
+  # PRACTICA PRELOAD
+  @spec get_with_blogs(String.t()) :: %User{} | nil
+  def get_with_blogs(username) do
+    User
+    |> where([u], u.username == ^username)
+    |> preload(:blogs)
+    |> Repo.one()
+  end
+
   def get_inactive_adults() do
     User
     |> where([u], u.active == false or u.age <= 18)
