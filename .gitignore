@@ -35,3 +35,4 @@ ecto_prueba-*.tar
 npm-debug.log
 /assets/node_modules/
 
+/.vscode
